@@ -38,8 +38,8 @@ class ColorDetecting():                                                         
         Grey = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
         mask1 = cv2.inRange(Grey, self.red_low, self.red_high)                                                # Создание облак точек для каждого цвета
-        mask2 = cv2.inRange(Grey, self.yellow_low, self.yellow_high)
-        mask3 = cv2.inRange(Grey, self.blue_low, self.blue_high)
+        mask2 = cv2.inRange(Grey, self.blue_low, self.blue_high)
+        mask3 = cv2.inRange(Grey, self.yellow_low, self.yellow_high)
 
         res1 = cv2.bitwise_and(img, img, mask= mask1)                                                         # Метод для отображения облака точек в цвете
         cv2.imshow('Red',res1)                                                                                # Вывод в отдельное окно (Нужно закоментить в случае отсутствия дисплея)
