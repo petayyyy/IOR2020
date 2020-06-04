@@ -8,6 +8,6 @@
     <param name="camera_frame_id" value="usb_cam" />
     <param name="io_method" value="mmap"/>
   </node>
-  <node name="qr.py" pkg="qr" type="qr.py" output="screen">
+  <node name="Red_Owls_qrCode.py" pkg="Red_Owls_qrCode" type="Red_Owls_qrCode.py" output="screen">
   <node name="web_video_server" pkg="web_video_server" type="web_video_server" />
 </launch>
