@@ -1,5 +1,5 @@
 # IOR2020
-sudo apt install ros-kinetic-web-video-server &&
+sudo apt install ros-kinetic-web-video-server \n
 sudo apt install ros-kinetic-usb-cam
 install repository
 catkin_make
