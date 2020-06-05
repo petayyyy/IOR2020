@@ -28,7 +28,7 @@ class ColorDetecting():                                                         
         self.yellow_low = np.array([19,69,157])                                                                      # И желтого
         self.yellow_high = np.array([51,255,229])
 
-        self.bridge = CvBridge()                                                                                     # Переменная необходимая для конвертация изображения из типа msg в обычный вид и обратно
+        self.bridge = CvBridge()                                                                                     # Переменная необходимая для конвертации изображения из типа msg в обычный вид и обратно
         self.image_sub = rospy.Subscriber("main_camera/image_raw",Image,self.callback)                               # Подписание на топик с изображением
 
     def callback(self,data):                                                                                         # Основная функция (data- изображения из типа msg)
