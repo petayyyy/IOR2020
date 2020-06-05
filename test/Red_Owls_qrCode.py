@@ -28,7 +28,7 @@ def image_callback(data):   # Функция для нахождении и ра
             texts.append([barcodeData, (x,y,w,h)])  # Сохраняет в список что в QR коде написано, и его координаты
 
             cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 4)    # Выделение по контуру на изоображении
-            cv2.putText(frame, str(barcodeData), (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX,0.5, (0, 0, 255), 1) # Делает надпись над QR кодом, что там написано, на изоображении
+            cv2.putText(frame, str(barcodeData), (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX,0.2, (0, 0, 255), ) # Делает надпись над QR кодом, что там написано, на изоображении
     image_pub.publish(bridge.cv2_to_imgmsg(frame, 'bgr8'))
 
 image_sub = rospy.Subscriber('main_camera/image_raw', Image, image_callback, queue_size=1) # Подписание на топик с изображением (Вставьте свой вместо main_camera/image_raw если у вас топик с изображением отличается)
