@@ -25,7 +25,7 @@ class ColorDetecting():                                                         
         self.blue_low = np.array([93,76,153])                                                                        # Синего
         self.blue_high = np.array([153,255,255])
 
-        self.yellow_low = np.array([19,69,157])                                                                     # И желтого
+        self.yellow_low = np.array([19,69,157])                                                                      # И желтого
         self.yellow_high = np.array([51,255,229])
 
         self.bridge = CvBridge()                                                                                     # Переменная необходимая для конвертация изображения из типа msg в обычный вид и обратно
@@ -125,7 +125,6 @@ def main(args):                                                                 
     rospy.spin()                                                                                                     # Обезательная функция для работы с топиками
   except KeyboardInterrupt:
     print("Shutting down")
-
 
 if __name__ == '__main__':
     main(sys.argv)
