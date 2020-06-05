@@ -15,7 +15,7 @@ bridge = CvBridge()
 
 
 def image_callback(data):   # Функция для нахождении и распознование QR кодов
-    frame = bridge.imgmsg_to_cv2(data, 'bgr8')      # Считывает картинку
+    frame = bridge.imgmsg_to_cv2(data, 'bgr8')      # Считывание изображения
     barcodes  = pyzbar.decode(frame)    # Распознование QR-кодов
     if barcodes:    # Если они на картинке есть
         texts = []
