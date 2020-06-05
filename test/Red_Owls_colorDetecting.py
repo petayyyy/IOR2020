@@ -45,7 +45,7 @@ class ColorDetecting():                                                         
         mask2 = cv2.inRange(Grey, self.blue_low, self.blue_high)
         mask4 = cv2.inRange(Grey, self._red_low, self._red_high)
         
-        res1 = cv2.bitwise_and(img, img, mask= mask1|mask4)                                                          # Метод для отображения облака точек в цвете
+        res1 = cv2.bitwise_and(img, img, mask= mask1|mask4)                                                          # Метод для отображения облаков точек в цвете
         try:
             self.image_pub_red.publish(self.bridge.cv2_to_imgmsg(res1, "bgr8"))                                      # Вывод в отдельный топик
         except CvBridgeError as e:
@@ -122,7 +122,7 @@ class ColorDetecting():                                                         
 def main(args):                                                                                                      # Начальная функция
   col_det = ColorDetecting()                                                                                         # Обращение к классу Color_detect
   try:
-    rospy.spin()                                                                                                     # Обезательная функция для работы с топиками
+    rospy.spin()                                                                                                     # Обязательная функция для работы с топиками
   except KeyboardInterrupt:
     print("Shutting down")
 
