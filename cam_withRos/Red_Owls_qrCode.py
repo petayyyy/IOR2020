@@ -33,4 +33,4 @@ def image_callback(data):   # Функция для нахождения и ра
 
 image_sub = rospy.Subscriber('main_camera/image_raw', Image, image_callback, queue_size=1) # Подписание на топик с изображением
 
-rospy.spin() # Обезательная функция для работы с топиками
+rospy.spin() # Обязательная функция для работы с топиками
