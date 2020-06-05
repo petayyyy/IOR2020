@@ -9,8 +9,8 @@ from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
 from std_msgs.msg import String
 
-rospy.init_node('fff')
-image_pub = rospy.Publisher("QR", Image,queue_size=10)
+rospy.init_node('fff') # Создание ноды
+image_pub = rospy.Publisher("QR", Image,queue_size=10) # Создание топика для вывода финального изображения
 bridge = CvBridge()
 
 
@@ -31,6 +31,6 @@ def image_callback(data):   # Функция для нахождении и ра
             cv2.putText(frame, str(barcodeData), (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX,0.5, (0, 0, 255), 1) # Делает надпись над QR кодом, что там написано, на изоображении
     image_pub.publish(bridge.cv2_to_imgmsg(frame, 'bgr8'))
 
-image_sub = rospy.Subscriber('main_camera/image_raw', Image, image_callback, queue_size=1)
+image_sub = rospy.Subscriber('main_camera/image_raw', Image, image_callback, queue_size=1) # Подписание на топик с изображением (Вставьте свой вместо main_camera/image_raw если у вас топик с изображением отличается)
 
-rospy.spin()
+rospy.spin() # Обезательная функция для работы с топиками
