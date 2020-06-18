@@ -39,8 +39,8 @@ class ColorDetecting():                                                         
         self.soil_high = np.array([111,243,138])
         
         
-        self.pix_x = 320
-        self.pix_y = 240
+        self.pix_x = 160
+        self.pix_y = 120
         self.yaw_x = 160
         self.yaw_y = 120
         
