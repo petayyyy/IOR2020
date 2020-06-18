@@ -227,8 +227,9 @@ class ColorDetecting():                                                         
                     self.image_pub.publish(self.bridge.cv2_to_imgmsg(img, "bgr8"))                                           # Вывод конвертипованного изображения
                 except CvBridgeError as e:
                     print(e)
-        print(self.lan)
-        print(self.ploh)
+        print(self.lan,"self.lan")
+        print(self.ploh,"self.ploh")
+        print(self.land,"self.land")
 
 def main(args):                                                                                                      # Начальная функция
   col_det = ColorDetecting()                                                                                         # Обращение к классу Color_detect
