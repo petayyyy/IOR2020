@@ -47,7 +47,9 @@ class ColorDetecting():                                                         
         self.Qr = True
         self.Color = True
         self.Land = False
+        self.ploh = {'A':[],'B':[],'C':[],'D:[]}
         self.Pole = 'A'
+        self.lan = {'Water':[],'Seed':[],'Pastures':[]}
         self.bridge = CvBridge()                                                                                     # Переменная необходимая для конвертации изображения из типа msg в обычный вид и обратно
         self.image_sub = rospy.Subscriber("main_camera/image_raw",Image,self.callback)                               # Подписание на топик с изображением
     def distance_x(self,x,z):
@@ -136,12 +138,9 @@ class ColorDetecting():                                                         
                             y = int(sum_y / sum_pixel)
                             x_d = self.distance_x(x)/10
                             y_d = self.distance_y(y)/10
-                            if len(approx) < 10:
-                                cv2.putText(img, 'N3_Potato', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
-                                self.ploh{self.Pole:[x_d,y_d]}
-                                cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
-                            else:
-                                self.lan{'Potato':[x_d,y_d]}
+                            cv2.putText(img, 'N3_Potato', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                            self.ploh[self.Pole].append([x_d,y_d])
+                            cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                     except:pass
                 
                 _, water, hier = cv2.findContours(mask2, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                          # Тоже самое для синего 
@@ -159,10 +158,10 @@ class ColorDetecting():                                                         
                             y_d = self.distance_y(y)/10
                             if len(approx) < 10:
                                 cv2.putText(img, 'N3_Water', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
-                                self.ploh{self.Pole:[x_d,y_d]}
+                                self.ploh[self.Pole].append([x_d,y_d])
                                 cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                             else:
-                                self.lan{'Water':[x_d,y_d]}
+                                self.lan['Water']:[x_d,y_d]
                     except:pass
 
                 _, seed, hier = cv2.findContours(mask3, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
@@ -180,10 +179,10 @@ class ColorDetecting():                                                         
                             y_d = self.distance_y(y)/10
                             if len(approx) < 10:
                                 cv2.putText(img, 'N3_Seed', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
-                                self.ploh{self.Pole:[x_d,y_d]}
+                                self.ploh[self.Pole].append([x_d,y_d])
                                 cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                             else:
-                                self.lan{'Seed':[x_d,y_d]}
+                                self.lan['Seed']:[x_d,y_d]
                     except:pass
                 
                 _, pastures, hier = cv2.findContours(mask4, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
@@ -201,16 +200,15 @@ class ColorDetecting():                                                         
                             y_d = self.distance_y(y)/10
                             if len(approx) < 10:
                                 cv2.putText(img, 'N3_Pastures', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
-                                self.ploh{self.Pole:[x_d,y_d]}
+                                self.ploh[self.Pole].append([x_d,y_d])
                                 cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                             else:
-                                self.lan{'Pastures':[x_d,y_d]}
+                                self.lan['Pastures']:[x_d,y_d]
                     except:pass
                 
                 _, soil, hier = cv2.findContours(mask5, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
                 for c in soil:
                     try:
-                        approx = cv2.approxPolyDP(c, 0.01* cv2.arcLength(contour, True), True)
                         moments = cv2.moments(c, 1)
                         sum_y = moments['m01']
                         sum_x = moments['m10']
@@ -220,12 +218,9 @@ class ColorDetecting():                                                         
                             y = int(sum_y / sum_pixel)
                             x_d = self.distance_x(x)/10
                             y_d = self.distance_y(y)/10
-                            if len(approx) < 10:
-                                cv2.putText(img, 'N3_Soil', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
-                                self.ploh{self.Pole:[x_d,y_d]}
-                                cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
-                            else:
-                                self.lan{'Soil':[x_d,y_d]}
+                            cv2.putText(img, 'N3_Soil', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                            self.ploh[self.Pole].append([x_d,y_d])
+                            cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                     except:pass
                 
                 try:
