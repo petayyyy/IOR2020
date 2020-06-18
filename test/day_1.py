@@ -161,7 +161,7 @@ class ColorDetecting():                                                         
                                 self.ploh[self.Pole].append([x_d,y_d])
                                 cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                             else:
-                                self.lan['Water']:[x_d,y_d]
+                                self.lan['Water'].append([x_d,y_d])
                     except:pass
 
                 _, seed, hier = cv2.findContours(mask3, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
@@ -182,7 +182,7 @@ class ColorDetecting():                                                         
                                 self.ploh[self.Pole].append([x_d,y_d])
                                 cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                             else:
-                                self.lan['Seed']:[x_d,y_d]
+                                self.lan['Seed'].append([x_d,y_d])
                     except:pass
                 
                 _, pastures, hier = cv2.findContours(mask4, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
@@ -203,7 +203,7 @@ class ColorDetecting():                                                         
                                 self.ploh[self.Pole].append([x_d,y_d])
                                 cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                             else:
-                                self.lan['Pastures']:[x_d,y_d]
+                                self.lan['Pastures']..append([x_d,y_d])
                     except:pass
                 
                 _, soil, hier = cv2.findContours(mask5, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
