@@ -47,7 +47,7 @@ class ColorDetecting():                                                         
         self.Qr = True
         self.Color = True
         self.Land = False
-        self.ploh = {'A':[],'B':[],'C':[],'D:[]}
+        self.ploh = {'A':[],'B':[],'C':[],'D':[]}
         self.Pole = 'A'
         self.lan = {'Water':[],'Seed':[],'Pastures':[]}
         self.bridge = CvBridge()                                                                                     # Переменная необходимая для конвертации изображения из типа msg в обычный вид и обратно
