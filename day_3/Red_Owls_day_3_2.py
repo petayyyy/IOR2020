@@ -139,9 +139,9 @@ class ColorDetecting():                                                         
                             y_d = self.distance_y(y,start.z)
                             print(x_d, y_d)
                             print(len(approx))
-                            cv2.drawContours(img, [c], 0, (0, 0, 0), 1)
                             if math.sqrt(x_d**2+y_d**2) < 0.9:
                                 if len(approx) < 9:
+                                    cv2.drawContours(img, [approx], 0, (0, 0, 0), 1)
                                     #cv2.putText(img, 'N3_Water', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                     cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                     self.ploh['Water'].append([start.x+x_d,start.y+y_d])
@@ -167,7 +167,7 @@ class ColorDetecting():                                                         
                             print(len(approx))
                             if math.sqrt(x_d**2+y_d**2) < 0.9:
                                 if len(approx) < 9:
-                                    cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
+                                    cv2.drawContours(img, [approx], 0, (0, 0, 0), 2)
                                     #cv2.putText(img, 'N3_Seed', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                     cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                     self.ploh['Seed'].append([start.x+x_d,start.y+y_d])
@@ -194,7 +194,7 @@ class ColorDetecting():                                                         
                                     #cv2.putText(img, 'N3_Pastures', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                     cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                     self.ploh['Pastures'].append([start.x+x_d,start.y+y_d])
-                                    cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
+                                    cv2.drawContours(img, [approx], 0, (0, 0, 0), 2)
                                 else:
                                     self.lan['pastures'].append([start.x+x_d,start.y+y_d])
                                     cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
