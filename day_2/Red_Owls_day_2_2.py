@@ -310,7 +310,7 @@ print navigate(x=0, y=0, z=1.5, speed=0.5, yaw=math.radians(90),frame_id='aruco_
 print('Захар делай скрин')
 rospy.sleep(6)
 
-if col_det.lan[col_det.Qr] != None:
+if col_det.land in col_det.lan:
     x1 = col_det.lan[col_det.Qr][0]
     y1 = col_det.lan[col_det.Qr][1]
     print navigate(x=x1, y=y1, z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
