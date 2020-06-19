@@ -142,9 +142,11 @@ class ColorDetecting():                                                         
                             cv2.drawContours(img, [c], 0, (0, 0, 0), 1)
                             if math.sqrt(x_d**2+y_d**2) < 0.9:
                                 if len(approx) < 9:
-                                    cv2.putText(img, 'N3_Water', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                                    #cv2.putText(img, 'N3_Water', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                                    cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                     self.ploh['Water'].append([start.x+x_d,start.y+y_d])
                                 else:
+                                    cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                     self.lan['water'].append([start.x+x_d,start.y+y_d])
                     except:pass
 
@@ -166,9 +168,11 @@ class ColorDetecting():                                                         
                             if math.sqrt(x_d**2+y_d**2) < 0.9:
                                 if len(approx) < 9:
                                     cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
-                                    cv2.putText(img, 'N3_Seed', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                                    #cv2.putText(img, 'N3_Seed', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                                    cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                     self.ploh['Seed'].append([start.x+x_d,start.y+y_d])
                                 else:
+                                    cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                     self.lan['seed'].append([start.x+x_d,start.y+y_d])
                     except:pass
 
@@ -187,14 +191,16 @@ class ColorDetecting():                                                         
                             y_d = self.distance_y(y,start.z)/10
                             if math.sqrt(x_d**2+y_d**2) < 0.9:
                                 if len(approx) < 9:
-                                    cv2.putText(img, 'N3_Pastures', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                                    #cv2.putText(img, 'N3_Pastures', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                                    cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                     self.ploh['Pastures'].append([start.x+x_d,start.y+y_d])
                                     cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                                 else:
                                     self.lan['pastures'].append([start.x+x_d,start.y+y_d])
+                                    cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                     except:pass
 
-                _, soil, hier = cv2.findContours(mask5, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
+                _, soil, hier = cv2.findContours(mask5, cv2.RETR_EXTERNAL,cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
                 for c in soil:
                     try:
                         moments = cv2.moments(c, 1)
@@ -215,6 +221,7 @@ class ColorDetecting():                                                         
                     self.image_pub.publish(self.bridge.cv2_to_imgmsg(img, "bgr8"))                                           # Вывод конвертипованного изображения
                 except CvBridgeError as e:
                     print(e)
+                self.Color = False
 def main():                                                                                                      # Начальная функция
   global col_det
   col_det = ColorDetecting()                                                                                         # Обращение к классу Color_detect
@@ -226,110 +233,247 @@ print('ready')
 
 print navigate(x=0, y=0, z=1, speed=0.5, frame_id='body', auto_arm=True)
 rospy.sleep(3)
+
 print navigate(x=0.5, y=0.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 col_det.Qr = True
 print('Захар делай скрин')
 print('Qr detect:' + col_det.land)
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=0.5, y=0.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=0.5, y=1.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=0.5, y=1.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=0.5, y=2.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=0.5, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1, y=2.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1, y=1.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1, y=1.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1, y=0.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1, y=0.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1.5, y=0.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1.5, y=0.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1.5, y=1.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1.5, y=1.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1.5, y=2.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1.5, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=1.5, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2, y=2.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2, y=2.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2, y=1.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2, y=1.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2, y=0.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2, y=0.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2.5, y=0.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2.5, y=0.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2.5, y=1.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2.5, y=0.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2.5, y=0.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2.5, y=1.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2.5, y=1.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2.5, y=2.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
+
 print navigate(x=2.5, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(6)
@@ -346,7 +490,8 @@ rospy.sleep(10)
 land()
 b = 0.4
 mark = {'A':[],'B':[],'C':[],'D':[]}
-   
+print('Подождите обработку данных') 
+
 point(col_det.ploh['Water'],'Water')
 point(col_det.ploh['Potato'],'Potato')
 point(col_det.ploh['Pastures'],'Pastures')
