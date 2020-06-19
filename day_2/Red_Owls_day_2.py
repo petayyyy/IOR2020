@@ -71,14 +71,14 @@ class ColorDetecting():                                                         
         self.bridge = CvBridge()                                                                                     # Переменная необходимая для конвертации изображения из типа msg в обычный вид и обратно
         self.image_sub = rospy.Subscriber("main_camera/image_raw",Image,self.callback)                               # Подписание на топик с изображением
     def distance_x(self,x,z):
-        if x >= pix_x //2:
+        if x >= self.pix_x //2:
             tg_yaw_x = ((x - self.pix_x)*math.tan(math.radians(self.yaw_x // 2)))/(self.pix_x)
             return int(tg_yaw_x * z)
         else:
             tg_yaw_x = ((self.pix_x - x)*math.tan(math.radians(self.yaw_x // 2)))/(self.pix_x)
             return -int(tg_yaw_x * z)
     def distance_y(self,y,z):
-        if y >= pix_y //2:
+        if y >= self.pix_y //2:
             tg_yaw_y = ((y - self.pix_y)*math.tan(math.radians(self.yaw_y // 2)))/(self.pix_y)
             return -int(tg_yaw_y * z)
         else:
