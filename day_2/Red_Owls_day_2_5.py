@@ -56,18 +56,22 @@ class ColorDetecting():                                                         
         self._potato_low = np.array([10,140,255])                                                                           # Доп фильтр для красного цвета
         self._potato_high = np.array([20,255,255])
 
+        
         self.water_low = np.array([111, 79, 132])                                                                       # Синего
         self.water_high = np.array([120, 171, 241])
 
         self.seed_low = np.array([0,49,130])                                                                      # И желтого
         self.seed_high = np.array([63,255,255])
 
-        self.pastures_low = np.array([88,65,98])                                                                      # И желтого
-        self.pastures_high = np.array([106,255,144])
+        self.pastures_low = np.array([42,146,32])                                                                      # И желтого
+        self.pastures_high = np.array([100,255,79])
 
-        self.soil_low = np.array([12,223,128])                                                                      # И желтого
-        self.soil_high = np.array([111,243,138])
-
+        self.soil_low = np.array([0,30,130])                                                                      # И желтого
+        self.soil_high = np.array([9,62,150])
+        
+        self._soil_low = np.array([153,12,130])                                                                      # И желтого
+        self._soil_high = np.array([185,35,140])
+        
         self.Qr = False
         self.Color = True
         self.land = ''
@@ -107,7 +111,7 @@ class ColorDetecting():                                                         
                 mask3 = cv2.inRange(Grey, self.seed_low, self.seed_high)
                 mask4 = cv2.inRange(Grey, self.pastures_low, self.pastures_high)
                 mask5 = cv2.inRange(Grey, self.soil_low, self.soil_high)
-
+                mask6 = cv2.inRange(Grey, self._soil_low, self._soil_high)
                 _, potato, hier = cv2.findContours(mask1_1|mask1_2, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                     # Поиск контуров в облаке точек (Красном)
                 for c in potato:                                                                                                # Перебор каждого контура
                     try:
@@ -194,7 +198,7 @@ class ColorDetecting():                                                         
                                 self.lan['pastures'].append([start.x+x_d,start.y+y_d])
                     except:pass
 
-                _, soil, hier = cv2.findContours(mask5, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
+                _, soil, hier = cv2.findContours(mask5|mask6, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
                 for c in soil:
                     try:
                         moments = cv2.moments(c, 1)
