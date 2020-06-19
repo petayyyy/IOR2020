@@ -25,25 +25,25 @@ set_rates = rospy.ServiceProxy('set_rates', srv.SetRates)
 land = rospy.ServiceProxy('land', Trigger)
 
 
-def point(mas,text):
+def point(mas, text):
     global mark,b
     for i in range (len(mas)):
         for j in (i+1,len(mas)):
             if math.sqrt(abs(mas[i][0] - mas[j][0])**2 + abs(mas[i][1] - mas[j][1])**2) <= b:
-                mas[i][0] = (mas[i][0] + mas[j][0])//2
-                mas[i][1] = (mas[i][1] + mas[j][1])//2
+                mas[i][0] = (mas[i][0] + mas[j][0])/2
+                mas[i][1] = (mas[i][1] + mas[j][1])/2
                 del mas[j]
-            if mas[j][0] == mas[-1][0]:
+            if j+1 != len(mas):
                 break
         if mas[i][0] <= 2 and mas[i][1] <= 2:
-            mark['C'].append([text,mas[i][0]],mas[i][1])
+            mark['C'].append([text,mas[i][0],mas[i][1]])
         elif mas[i][0] > 2 and mas[i][1] < 2:
-            mark['D'].append([text,mas[i][0]],mas[i][1])
+            mark['D'].append([text,mas[i][0],mas[i][1]])
         elif mas[i][0] > 2 and mas[i][1] > 2:
-            mark['B'].append([text,mas[i][0]],mas[i][1])
+            mark['B'].append([text,mas[i][0],mas[i][1]])
         elif mas[i][0] < 2 and mas[i][1] > 2:
-            mark['A'].append([text,mas[i][0]],mas[i][1])
-        if mas[j][0] == mas[-1][0]:
+            mark['A'].append([text,mas[i][0],mas[i][1]])
+        if i+1 != len(mas):
             break
 
 class ColorDetecting():                                                                                              # Класс для распознавание цветов - желтый, синий, красный
@@ -63,14 +63,14 @@ class ColorDetecting():                                                         
         self._potato_low = np.array([10,140,255])                                                                           # Доп фильтр для красного цвета
         self._potato_high = np.array([20,255,255])
 
-        self.water_low = np.array([107,60,50])                                                                       # Синего
-        self.water_high = np.array([137,255,255])
+        self.water_low = np.array([111, 79, 132])                                                                       # Синего
+        self.water_high = np.array([120, 171, 241])
 
         self.seed_low = np.array([0,49,130])                                                                      # И желтого
         self.seed_high = np.array([63,255,255])
 
-        self.pastures_low = np.array([42,146,32])                                                                      # И желтого
-        self.pastures_high = np.array([100,255,255])
+        self.pastures_low = np.array([88,65,98])                                                                      # И желтого
+        self.pastures_high = np.array([106,255,144])
 
         self.soil_low = np.array([12,223,128])                                                                      # И желтого
         self.soil_high = np.array([111,243,138])
@@ -331,4 +331,7 @@ point(col_det.ploh['Seed'],'Seed')
 
 print('Сектор       Тип территории      Координаты (см) от центра')
 print('                                        x           y')
-print(mark)
+for i in mark:
+    if len(mark[i])>0:
+        for j in mark[i]:
+            print("{}             {}                    {}        {}".format(i, j[0], j[1], j[2]))
