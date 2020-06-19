@@ -476,7 +476,10 @@ col_det.Color = True
 
 print navigate(x=2.5, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(6)
+rospy.sleep(3)
+col_det.Color = True
+rospy.sleep(3)
+col_det.Color = True
 
 print('Qr detect:' + col_det.land)
 if col_det.land in col_det.lan:
