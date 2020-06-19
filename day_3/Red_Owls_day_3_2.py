@@ -52,13 +52,9 @@ class ColorDetecting():                                                         
         rospy.init_node('Color_detect', anonymous=True)                                                              # Создание ноды
         self.image_pub = rospy.Publisher("Final",Image,queue_size=10)                                                # И топика для вывода финального изображения
 
-        self.potato_low = np.array([0,140,170])                                                                         # Параметры необходимые для определения облака точек каждого цвета:
-        self.potato_high = np.array([20, 255, 255])                                                                     # Красного
-
-        self._potato_low = np.array([10,140,255])                                                                           # Доп фильтр для красного цвета
-        self._potato_high = np.array([20,255,255])
-
-        
+        self.potato_low = np.array([171,51,51])                                                                          # Параметры необходимые для определения облака точек каждого цвета:
+        self.potato_high = np.array([255, 255, 255])                                                                     # Красного
+      
         self.water_low = np.array([106,65,62])                                                                       # Синего
         self.water_high = np.array([128,192,121])
 
