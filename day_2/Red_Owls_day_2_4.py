@@ -141,8 +141,8 @@ class ColorDetecting():                                                         
                         if sum_pixel > 20:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
-                            x_d = self.distance_x(x)/10
-                            y_d = self.distance_y(y)/10
+                            x_d = self.distance_x(x,start.z)/10
+                            y_d = self.distance_y(y,start.z)/10
                             cv2.putText(img, 'N3_Potato', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                             self.ploh['Potato'].append([start.x+x_d,start.y+y_d])
                             cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
@@ -159,8 +159,8 @@ class ColorDetecting():                                                         
                         if sum_pixel > 20:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
-                            x_d = self.distance_x(x)/10
-                            y_d = self.distance_y(y)/10
+                            x_d = self.distance_x(x,start.z)/10
+                            y_d = self.distance_y(y,start.z)/10
                             if len(approx) < 10:
                                 cv2.putText(img, 'N3_Water', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                 self.ploh['Water'].append([start.x+x_d,start.y+y_d])
@@ -180,8 +180,8 @@ class ColorDetecting():                                                         
                         if sum_pixel > 20:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
-                            x_d = self.distance_x(x)/10
-                            y_d = self.distance_y(y)/10
+                            x_d = self.distance_x(x,start.z)/10
+                            y_d = self.distance_y(y,start.z)/10
                             if len(approx) < 10:
                                 cv2.putText(img, 'N3_Seed', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                 self.ploh['Seed'].append([start.x+x_d,start.y+y_d])
@@ -201,8 +201,8 @@ class ColorDetecting():                                                         
                         if sum_pixel > 20:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
-                            x_d = self.distance_x(x)/10
-                            y_d = self.distance_y(y)/10
+                            x_d = self.distance_x(x,start.z)/10
+                            y_d = self.distance_y(y,start.z)/10
                             if len(approx) < 10:
                                 cv2.putText(img, 'N3_Pastures', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                 self.ploh['Pastures'].append([start.x+x_d,start.y+y_d])
@@ -221,8 +221,8 @@ class ColorDetecting():                                                         
                         if sum_pixel > 20:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
-                            x_d = self.distance_x(x)/10
-                            y_d = self.distance_y(y)/10
+                            x_d = self.distance_x(x,start.z)/10
+                            y_d = self.distance_y(y,start.z)/10
                             cv2.putText(img, 'N3_Soil', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                             self.ploh['Soil'].append([start.x+x_d,start.y+y_d])
                             cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
