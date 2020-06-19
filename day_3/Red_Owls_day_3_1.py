@@ -36,13 +36,13 @@ def point(mas, text):
                 del mas[j]
             if j+1 != len(mas):
                 break
-        if mas[i][0] <= 2 and mas[i][1] <= 2:
+        if mas[i][0] <= 2 and mas[i][1] <= 2 and mas[i][0] >= 0 and mas[i][1] >= 0:
             mark['C'].append([text,mas[i][0],mas[i][1]])
-        elif mas[i][0] > 2 and mas[i][1] < 2:
+        elif mas[i][0] > 2 and mas[i][1] < 2 and mas[i][0] <= 4 and mas[i][1] >= 0:
             mark['D'].append([text,mas[i][0],mas[i][1]])
-        elif mas[i][0] > 2 and mas[i][1] > 2:
+        elif mas[i][0] > 2 and mas[i][1] > 2 and mas[i][0] <= 4 and mas[i][1] <= 4:
             mark['B'].append([text,mas[i][0],mas[i][1]])
-        elif mas[i][0] < 2 and mas[i][1] > 2:
+        elif mas[i][0] < 2 and mas[i][1] > 2 and mas[i][0] >= 0 and mas[i][1] <= 4:
             mark['A'].append([text,mas[i][0],mas[i][1]])
         if i+1 != len(mas):
             break
