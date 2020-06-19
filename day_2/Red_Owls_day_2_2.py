@@ -25,7 +25,7 @@ set_rates = rospy.ServiceProxy('set_rates', srv.SetRates)
 land = rospy.ServiceProxy('land', Trigger)
 
 
-def point(mas):
+def point(mas,text):
     global mark,b
     for i in range (len(mas)):
         for j in (i+1,len(mas)):
@@ -323,11 +323,11 @@ mas = col_det.ploh['Water']
 b = 1
 mark = {'A':[],'B':[],'C':[],'D':[]}
    
-point(col_det.ploh['Water'])
-point(col_det.ploh['Potato'])
-point(col_det.ploh['Pastures'])
-point(col_det.ploh['Soil'])
-point(col_det.ploh['Seed'])
+point(col_det.ploh['Water'],'Water')
+point(col_det.ploh['Potato'],'Potato')
+point(col_det.ploh['Pastures'],'Pastures')
+point(col_det.ploh['Soil'],'Soil')
+point(col_det.ploh['Seed'],'Seed')
 
 print('Сектор       Тип территории      Координаты (см) от центра')
 print('                                        x           y')
