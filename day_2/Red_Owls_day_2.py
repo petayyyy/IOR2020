@@ -10,11 +10,11 @@ import rospy
 from pyzbar import pyzbar
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
+import threading
 
 from clever import srv
 from std_srvs.srv import Trigger
 
-rospy.init_node('flight')
 
 get_telemetry = rospy.ServiceProxy('get_telemetry', srv.GetTelemetry)
 navigate = rospy.ServiceProxy('navigate', srv.Navigate)
