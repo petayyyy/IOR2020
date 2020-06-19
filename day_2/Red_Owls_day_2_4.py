@@ -68,43 +68,30 @@ class ColorDetecting():                                                         
         self.soil_low = np.array([12,223,128])                                                                      # И желтого
         self.soil_high = np.array([111,243,138])
 
-
-        self.pix_x = 160
-        self.pix_y = 120
-        self.yaw_x = 160
-        self.yaw_y = 120
-
         self.Qr = False
         self.Color = True
-        self.Land = False
         self.land = ''
         self.ploh = {'Water':[],'Seed':[],'Pastures':[],'Soil':[],'Potato':[]}
         self.lan = {'Water':[],'Seed':[],'Pastures':[]}
         self.bridge = CvBridge()                                                                                     # Переменная необходимая для конвертации изображения из типа msg в обычный вид и обратно
         self.image_sub = rospy.Subscriber("main_camera/image_raw",Image,self.callback)                               # Подписание на топик с изображением
     def distance_x(self,x,z):
-        if x >= self.pix_x //2:
-            tg_yaw_x = ((x - self.pix_x)*math.tan(math.radians(self.yaw_x // 2)))/(self.pix_x)
-            return int(tg_yaw_x * z)
+        if x >= 160:
+            return int((x - 160)*0.035445511372610664 * z)
         else:
-            tg_yaw_x = ((self.pix_x - x)*math.tan(math.radians(self.yaw_x // 2)))/(self.pix_x)
-            return -int(tg_yaw_x * z)
+            return -int((160 - x)*0.035445511372610664 * z)
     def distance_y(self,y,z):
-        if y >= self.pix_y //2:
-            tg_yaw_y = ((y - self.pix_y)*math.tan(math.radians(self.yaw_y // 2)))/(self.pix_y)
-            return -int(tg_yaw_y * z)
+        if y >= 120:
+            return -int((y - 120)*0.01443375672974064 * z)
         else:
-            tg_yaw_y = ((self.pix_y - y)*math.tan(math.radians(self.yaw_y // 2)))/(self.pix_y)
-            return int(tg_yaw_y * z)
+            return int((120 - y)*0.01443375672974064 * z)
     def callback(self,data):                                                                                         # Основная функция (data- изображения из типа msg)
         if self.Color == True or self.Qr == True:
             try:                                                                                                         # Считывание и конвертация изображения в вид пригодный для дальнейшей работы (try- для отсутствия ошибки если топик будет пустой)
                 img = self.bridge.imgmsg_to_cv2(data, "bgr8")
-            except CvBridgeError as e:
-                print(e)
+            except:pass
             
             start = get_telemetry(frame_id='aruco_map')
-            imgGrey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)                                                              # Наложения серого фильтра на изображение
             Grey = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
             if self.Qr == True:
