@@ -55,10 +55,6 @@ class ColorDetecting():                                                         
         self.potato_low = np.array([171,51,51])                                                                           # Параметры необходимые для определения облака точек каждого цвета:
         self.potato_high = np.array([255, 255, 255])                                                                     # Красного
 
-        self._potato_low = np.array([10,140,255])                                                                           # Доп фильтр для красного цвета
-        self._potato_high = np.array([20,255,255])
-
-        
         self.water_low = np.array([106,65,62])                                                                       # Синего
         self.water_high = np.array([128,192,121])
 
