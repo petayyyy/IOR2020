@@ -48,12 +48,6 @@ def point(mas, text):
 class ColorDetecting():                                                                                              # Класс для распознавание цветов - желтый, синий, красный
     def __init__(self):                                                                                              # Функция init содежит:
         rospy.init_node('Color_detect', anonymous=True)                                                              # Создание ноды
-        self.image_pub_potato = rospy.Publisher("Potato",Image,queue_size=10)                                              # Создание топиков с масками цветов
-        self.image_pub_water = rospy.Publisher("Water",Image,queue_size=10)
-        self.image_pub_seed = rospy.Publisher("Seed",Image,queue_size=10)
-        self.image_pub_pastures = rospy.Publisher("Pastures",Image,queue_size=10)
-        self.image_pub_soil = rospy.Publisher("Soil",Image,queue_size=10)
-
         self.image_pub = rospy.Publisher("Final",Image,queue_size=10)                                                # И топика для вывода финального изображения
 
         self.potato_low = np.array([0,140,170])                                                                         # Параметры необходимые для определения облака точек каждого цвета:
@@ -80,7 +74,7 @@ class ColorDetecting():                                                         
         self.yaw_x = 160
         self.yaw_y = 120
 
-        self.Qr = True
+        self.Qr = False
         self.Color = True
         self.Land = False
         self.land = ''
@@ -236,11 +230,14 @@ def main():                                                                     
   global col_det
   col_det = ColorDetecting()                                                                                         # Обращение к классу Color_detect
 
-threading.Thread(target= main()).start()
-
+main()
+print('sleep')
+time.sleep(10)
+print('ready')
 print navigate(x=0, y=0, z=1, speed=0.5, frame_id='body', auto_arm=True)
 rospy.sleep(3)
 print navigate(x=1, y=0.3, z=1.5, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
+col_det.Qr = True
 print('Захар делай скрин')
 rospy.sleep(6)
 print('Qr detect:' + col_det.land)
@@ -269,6 +266,7 @@ print navigate(x=0, y=0, z=1.5, speed=0.5, yaw=math.radians(90),frame_id='aruco_
 print('Захар делай скрин')
 rospy.sleep(6)
 
+print('Qr detect:' + col_det.land)
 if col_det.land in col_det.lan:
     x1 = col_det.lan[col_det.Qr][0]
     y1 = col_det.lan[col_det.Qr][1]
