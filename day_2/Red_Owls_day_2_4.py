@@ -98,7 +98,7 @@ class ColorDetecting():                                                         
                 barcodes  = pyzbar.decode(img)    # Распознование QR-кодов
                 if barcodes:    # Если они на картинке есть
                     for bar in barcodes:       # Проходит по всем QR кодам, которые он нашел
-                        self.land = bar.data.decode("utf-8") # Записывает в переменную информацию, находящуюся в данном коде
+                        self.land = (bar.data.decode("utf-8")).lower() # Записывает в переменную информацию, находящуюся в данном коде
                     self.Qr = False
             if self.Color == True:
                 mask1_1 = cv2.inRange(Grey, self.potato_low, self.potato_high)                                                          # Создание облак точек для каждого цвета
@@ -147,7 +147,7 @@ class ColorDetecting():                                                         
                                 self.ploh['Water'].append([start.x+x_d,start.y+y_d])
                                 cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                             else:
-                                self.lan['Water'].append([start.x+x_d,start.y+y_d])
+                                self.lan['water'].append([start.x+x_d,start.y+y_d])
                     except:pass
 
                 _, seed, hier = cv2.findContours(mask3, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
@@ -168,7 +168,7 @@ class ColorDetecting():                                                         
                                 self.ploh['Seed'].append([start.x+x_d,start.y+y_d])
                                 cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                             else:
-                                self.lan['Seed'].append([start.x+x_d,start.y+y_d])
+                                self.lan['seed'].append([start.x+x_d,start.y+y_d])
                     except:pass
 
                 _, pastures, hier = cv2.findContours(mask4, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
@@ -189,7 +189,7 @@ class ColorDetecting():                                                         
                                 self.ploh['Pastures'].append([start.x+x_d,start.y+y_d])
                                 cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                             else:
-                                self.lan['Pastures'].append([start.x+x_d,start.y+y_d])
+                                self.lan['pastures'].append([start.x+x_d,start.y+y_d])
                     except:pass
 
                 _, soil, hier = cv2.findContours(mask5, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
