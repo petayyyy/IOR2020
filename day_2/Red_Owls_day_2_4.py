@@ -117,8 +117,6 @@ class ColorDetecting():                                                         
                         sum_y = moments['m01']
                         sum_x = moments['m10']
                         sum_pixel = moments['m00']
-                        approx = cv2.approxPolyDP(c, 0.01* cv2.arcLength(contour, True), True)
-                        #cv2.drawContours(res, [approx], 0, (255, 255, 255), 2)
                         if sum_pixel > 20:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
@@ -132,7 +130,7 @@ class ColorDetecting():                                                         
                 _, water, hier = cv2.findContours(mask2, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                          # Тоже самое для синего
                 for c in water:
                     try:
-                        approx = cv2.approxPolyDP(c, 0.01* cv2.arcLength(contour, True), True)
+                        approx = cv2.approxPolyDP(c, 0.01* cv2.arcLength(c, True), True)
                         moments = cv2.moments(c, 1)
                         sum_y = moments['m01']
                         sum_x = moments['m10']
@@ -153,7 +151,7 @@ class ColorDetecting():                                                         
                 _, seed, hier = cv2.findContours(mask3, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
                 for c in seed:
                     try:
-                        approx = cv2.approxPolyDP(c, 0.01* cv2.arcLength(contour, True), True)
+                        approx = cv2.approxPolyDP(c, 0.01* cv2.arcLength(c, True), True)
                         moments = cv2.moments(c, 1)
                         sum_y = moments['m01']
                         sum_x = moments['m10']
@@ -174,7 +172,7 @@ class ColorDetecting():                                                         
                 _, pastures, hier = cv2.findContours(mask4, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
                 for c in pastures:
                     try:
-                        approx = cv2.approxPolyDP(c, 0.01* cv2.arcLength(contour, True), True)
+                        approx = cv2.approxPolyDP(c, 0.01* cv2.arcLength(c, True), True)
                         moments = cv2.moments(c, 1)
                         sum_y = moments['m01']
                         sum_x = moments['m10']
