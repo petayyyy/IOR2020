@@ -26,13 +26,14 @@ land = rospy.ServiceProxy('land', Trigger)
 class ColorDetecting():                                                                                              # Класс для распознавание цветов - желтый, синий, красный
     def __init__(self):                                                                                              # Функция init содежит:
         rospy.init_node('Color_detect', anonymous=True)                                                              # Создание ноды
+        self.out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('X','V','I','D'), 20, (320,240))
         self.bridge = CvBridge()                                                                                     # Переменная необходимая для конвертации изображения из типа msg в обычный вид и обратно
         self.image_sub = rospy.Subscriber("main_camera/image_raw",Image,self.callback)                               # Подписание на топик с изображением
     def callback(self,data):                                                                                         # Основная функция (data- изображения из типа msg)
         try:                                                                                                         # Считывание и конвертация изображения в вид пригодный для дальнейшей работы (try- для отсутствия ошибки если топик будет пустой)
           img = self.bridge.imgmsg_to_cv2(data, "bgr8")
         except:pass
-        Grey = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+        self.out.write(img)
 
 def main():                                                                                                      # Начальная функция
   global col_det
