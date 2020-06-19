@@ -29,7 +29,7 @@ def point(mas,text):
     global mark,b
     for i in range (len(mas)):
         for j in (i+1,len(mas)):
-            if math.sqrt(abs(mas[i][0] - mas[j][0])**2 + abs(mas[i][1] - mas[j][1])) <= b:
+            if math.sqrt(abs(mas[i][0] - mas[j][0])**2 + abs(mas[i][1] - mas[j][1])**2) <= b:
                 mas[i][0] = (mas[i][0] + mas[j][0])//2
                 mas[i][1] = (mas[i][1] + mas[j][1])//2
                 del mas[j]
