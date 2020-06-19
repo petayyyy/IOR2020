@@ -23,6 +23,10 @@ set_attitude = rospy.ServiceProxy('set_attitude', srv.SetAttitude)
 set_rates = rospy.ServiceProxy('set_rates', srv.SetRates)
 land = rospy.ServiceProxy('land', Trigger)
 
+f = open('coordin.txt','r')
+# работа с файлом
+
+
 class ColorDetecting():                                                                                              # Класс для распознавание цветов - желтый, синий, красный
     def __init__(self):                                                                                              # Функция init содежит:
         rospy.init_node('Color_detect', anonymous=True)                                                              # Создание ноды
@@ -45,398 +49,391 @@ print navigate(x=0, y=0, z=1, speed=0.5, frame_id='body', auto_arm=True)
 rospy.sleep(3)
 
 print navigate(x=0.5, y=0.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
-col_det.Qr = True
+f.write(str(start.x,start.y,start.z)+'\n')
 print('Захар делай скрин')
 print('Qr detect:' + col_det.land)
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=0.5, y=0.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=0.5, y=1.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=0.5, y=1.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=0.5, y=2.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=0.5, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1, y=2.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1, y=1.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1, y=1.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1, y=0.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1, y=0.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1.5, y=0.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1.5, y=0.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1.5, y=1.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1.5, y=1.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1.5, y=2.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1.5, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=1.5, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2, y=2.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2, y=2.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2, y=1.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2, y=1.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2, y=0.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2, y=0.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2.5, y=0.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2.5, y=0.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2.5, y=1.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2.5, y=0.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2.5, y=0.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2.5, y=1.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2.5, y=1.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2.5, y=2.3, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 
 print navigate(x=2.5, y=2.8, z=1.2, speed=0.5, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
+f.write(str(start.x,start.y,start.z)+'\n')
 rospy.sleep(3)
 start = get_telemetry(frame_id='aruco_map')
 print(start.x,start.y,start.z)
-col_det.Color = True
-
-print('Qr detect:' + col_det.land)
-if col_det.land in col_det.lan:
-    x1 = col_det.lan[col_det.Qr][0]
-    y1 = col_det.lan[col_det.Qr][1]
-    print navigate(x=x1, y=y1, z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
-else:
-    print navigate(x=1, y=1, z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
-rospy.sleep(10)
+f.write(str(start.x,start.y,start.z)+'\n')
 
 land()
+
+f.close()
