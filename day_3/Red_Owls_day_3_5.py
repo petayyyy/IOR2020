@@ -78,14 +78,14 @@ class ColorDetecting():                                                         
         self.image_sub = rospy.Subscriber("main_camera/image_raw",Image,self.callback)                               # Подписание на топик с изображением
     def distance_x(self,x,z):
         if x >= 160:
-            return ((x - 160)*0.035445511372610664 * z)/10
+            return round(((x - 160)*0.035445511372610664 * z)*10 ,2)
         else:
-            return -((160 - x)*0.035445511372610664 * z)/10
+            return -round(((160 - x)*0.035445511372610664 * z)*10, 2)
     def distance_y(self,y,z):
         if y >= 120:
-            return -((y - 120)*0.01443375672974064 * z)/10
+            return -round(((y - 120)*0.01443375672974064 * z)*10, 2)
         else:
-            return ((120 - y)*0.01443375672974064 * z)/10
+            return round(((120 - y)*0.01443375672974064 * z)*10, 2)
     def callback(self,data):                                                                                         # Основная функция (data- изображения из типа msg)
         if self.Color == True or self.Qr == True:
             try:                                                                                                         # Считывание и конвертация изображения в вид пригодный для дальнейшей работы (try- для отсутствия ошибки если топик будет пустой)
