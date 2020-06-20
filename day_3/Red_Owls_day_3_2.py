@@ -28,7 +28,7 @@ def point(mas, text):
     global mark,b
     for i in range (len(mas)):
         for j in (i+1,len(mas)):
-             if j >= len(mas):
+            if j >= len(mas):
                 break
             if math.sqrt(abs(mas[i][0] - mas[j][0])**2 + abs(mas[i][1] - mas[j][1])**2) <= b:
                 mas[i][0] = (mas[i][0] + mas[j][0])/2
