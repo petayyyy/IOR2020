@@ -27,7 +27,7 @@ land = rospy.ServiceProxy('land', Trigger)
 def point(mas, text):
     global mark,b
     for i in range (len(mas)):
-        for j in (i+1,len(mas)):
+        for j in range (i+1,len(mas)):
             if j+1 != len(mas) or i+1 != len(mas):
                 break
             if math.sqrt(abs(mas[i][0] - mas[j][0])**2 + abs(mas[i][1] - mas[j][1])**2) <= b:
