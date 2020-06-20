@@ -73,7 +73,7 @@ class ColorDetecting():                                                         
         self.Color = True
         self.land = ''
         self.ploh = {'Water':[],'Seed':[],'Pastures':[],'Soil':[],'Potato':[]}
-        self.lan = {'Water':[],'Seed':[],'Pastures':[]}
+        self.lan = {'water':[],'seed':[],'pastures':[]}
         self.bridge = CvBridge()                                                                                     # Переменная необходимая для конвертации изображения из типа msg в обычный вид и обратно
         self.image_sub = rospy.Subscriber("main_camera/image_raw",Image,self.callback)                               # Подписание на топик с изображением
     def distance_x(self,x,z):
