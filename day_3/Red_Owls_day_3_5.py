@@ -101,8 +101,6 @@ class ColorDetecting():                                                         
                         self.land = (bar.data.decode("utf-8")).lower() # Записывает в переменную информацию, находящуюся в данном коде
                     self.Qr = False
             if self.Color == True:
-                st1 = cv2.getStructuringElement(cv2.MORPH_RECT, (21, 21), (10, 10))
-                st2 = cv2.getStructuringElement(cv2.MORPH_RECT, (11, 11), (5, 5))
                 mask1_1 = cv2.inRange(Grey, self.potato_low, self.potato_high)                                                          # Создание облак точек для каждого цвета
                 mask2 = cv2.inRange(Grey, self.water_low, self.water_high)
                 mask3 = cv2.inRange(Grey, self.seed_low, self.seed_high)
@@ -128,9 +126,7 @@ class ColorDetecting():                                                         
                             cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                     except:pass
                 
-                thresh = cv2.morphologyEx(mask2, cv2.MORPH_CLOSE, st1)
-                thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, st2)
-                _, water, hier = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                          # Тоже самое для синего                
+                _, water, hier = cv2.findContours(mask2, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                          # Тоже самое для синего                
                 for c in water:
                     try:
                         approx = cv2.approxPolyDP(c, 0.01* cv2.arcLength(c, True), True)
@@ -156,9 +152,7 @@ class ColorDetecting():                                                         
                                 cv2.putText(img, str(start.x+x_d)+' '+str(start.y+y_d), (x, y+20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     except:pass
                 
-                thresh = cv2.morphologyEx(mask3, cv2.MORPH_CLOSE, st1)
-                thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, st2)
-                _, seed, hier = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
+                _, seed, hier = cv2.findContours(mask3, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
                 for c in seed:
                     try:
                         approx = cv2.approxPolyDP(c, 0.01* cv2.arcLength(c, True), True)
@@ -184,9 +178,7 @@ class ColorDetecting():                                                         
                                 cv2.putText(img, str(start.x+x_d)+' '+str(start.y+y_d), (x, y+20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     except:pass
                     
-                thresh = cv2.morphologyEx(mask4, cv2.MORPH_CLOSE, st1)
-                thresh = cv2.morphologyEx(thresh, cv2.MORPH_OPEN, st2)
-                _, pastures, hier = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
+                _, pastures, hier = cv2.findContours(mask4, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)                        # И желтого
                 for c in pastures:
                     try:
                         approx = cv2.approxPolyDP(c, 0.01* cv2.arcLength(c, True), True)
