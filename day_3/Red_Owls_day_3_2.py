@@ -500,9 +500,16 @@ point(col_det.ploh['Pastures'],'Pastures')
 point(col_det.ploh['Soil'],'Soil')
 point(col_det.ploh['Seed'],'Seed')
 
+f = open('Info.txt', 'w')
 print('Сектор       Тип территории      Координаты (см) от центра')
 print('                                        x           y')
+f.write('Сектор       Тип территории      Координаты (см) от центра\n')
+f.write('                                        x           y\n')
 for i in mark:
     if len(mark[i])>0:
         for j in mark[i]:
             print("{}             {}                    {}        {}".format(i, j[0], j[1], j[2]))
+            f.write("{}             {}                    {}        {}\n".format(i, j[0], j[1], j[2]) )
+
+ 
+f.close()
