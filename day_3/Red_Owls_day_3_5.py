@@ -78,14 +78,14 @@ class ColorDetecting():                                                         
         self.image_sub = rospy.Subscriber("main_camera/image_raw",Image,self.callback)                               # Подписание на топик с изображением
     def distance_x(self,x,z):
         if x >= 160:
-            return round(((x - 160)*0.035445511372610664 * z)*10 ,2)
+            return round(((x - 160)*0.035445511372610664 * z) ,2)
         else:
-            return -round(((160 - x)*0.035445511372610664 * z)*10, 2)
+            return -round(((160 - x)*0.035445511372610664 * z), 2)
     def distance_y(self,y,z):
         if y >= 120:
-            return -round(((y - 120)*0.01443375672974064 * z)*10, 2)
+            return -round(((y - 120)*0.01443375672974064 * z), 2)
         else:
-            return round(((120 - y)*0.01443375672974064 * z)*10, 2)
+            return round(((120 - y)*0.01443375672974064 * z), 2)
     def callback(self,data):                                                                                         # Основная функция (data- изображения из типа msg)
         if self.Color == True or self.Qr == True:
             try:                                                                                                         # Считывание и конвертация изображения в вид пригодный для дальнейшей работы (try- для отсутствия ошибки если топик будет пустой)
@@ -119,8 +119,8 @@ class ColorDetecting():                                                         
                         if sum_pixel > 20:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
-                            x_d = self.distance_x(x,start.z)/10
-                            y_d = self.distance_y(y,start.z)/10
+                            x_d = self.distance_x(x,start.z)
+                            y_d = self.distance_y(y,start.z)
                             cv2.putText(img, 'N3_Potato', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                             self.ploh['Potato'].append([start.x+x_d,start.y+y_d])
                             cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
@@ -163,12 +163,12 @@ class ColorDetecting():                                                         
                         if sum_pixel > 10:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
-                            x_d = self.distance_x(x,start.z)/10
-                            y_d = self.distance_y(y,start.z)/10
+                            x_d = self.distance_x(x,start.z)
+                            y_d = self.distance_y(y,start.z)
                             print(x_d,y_d)
                             print(len(approx))
                             if math.sqrt(x_d**2+y_d**2) < 1.5:
-                                if len(approx) < 9:
+                                if len(approx) < 7:
                                     cv2.drawContours(img, [approx], 0, (0, 0, 0), 1)
                                     cv2.putText(img, 'N3_Seed', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                                     self.ploh['Seed'].append([start.x+x_d,start.y+y_d])
@@ -189,8 +189,8 @@ class ColorDetecting():                                                         
                         if sum_pixel > 10:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
-                            x_d = self.distance_x(x,start.z)/10
-                            y_d = self.distance_y(y,start.z)/10
+                            x_d = self.distance_x(x,start.z)
+                            y_d = self.distance_y(y,start.z)
                             if math.sqrt(x_d**2+y_d**2) < 1.5:
                                 if len(approx) < 9:
                                     cv2.drawContours(img, [approx], 0, (0, 0, 0), 1)
@@ -213,8 +213,8 @@ class ColorDetecting():                                                         
                         if sum_pixel > 10:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
-                            x_d = self.distance_x(x,start.z)/10
-                            y_d = self.distance_y(y,start.z)/10
+                            x_d = self.distance_x(x,start.z)
+                            y_d = self.distance_y(y,start.z)
                             cv2.putText(img, 'N3_Soil', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
                             self.ploh['Soil'].append([start.x+x_d,start.y+y_d])
                             cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
