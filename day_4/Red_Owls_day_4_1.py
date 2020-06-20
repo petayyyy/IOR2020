@@ -91,14 +91,18 @@ class ColorDetecting():                                                         
         self.image_sub = rospy.Subscriber("main_camera/image_raw_throttled",Image,self.callback)                               # Подписание на топик с изображением
     def distance_x(self,x,z):
         if x >= 160:
-            return ((x - 160)*0.00524437269 * z)
+            #return ((x - 160)*0.00625 * z) # 45
+            return ((x - 160)*0.00524437269 * z) # 40
         else:
+            #return -((160 - x)*0.00625 * z)
             return -((160 - x)*0.00524437269 * z)
     def distance_y(self,y,z):
         if y >= 120:
-        return -((y - 120)*0.00481125224 * z)
-    else:
-        return ((120 - y)*0.00481125224 * z)
+            #return -((y - 120)*0.00583506281 * z) # 35
+            return -((y - 120)*0.00481125224 * z) # 30
+        else:
+            #return ((120 - y)*0.00583506281 * z)
+            return ((120 - y)*0.00481125224 * z)
     def callback(self,data):                                                                                         # Основная функция (data- изображения из типа msg)
         if self.Color == True or self.Qr == True:
             try:                                                                                                         # Считывание и конвертация изображения в вид пригодный для дальнейшей работы (try- для отсутствия ошибки если топик будет пустой)
@@ -321,9 +325,10 @@ if col_det.land in col_det.lan:
     x1 = mark_pos[0]
     y1 = mark_pos[1]
     print navigate(x=x1, y=y1, z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
+    rospy.sleep(13)
 else:
     print navigate(x=1, y=1, z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
-rospy.sleep(13)
+    rospy.sleep(13)
 
 print(col_det.lan,'col_det.lan')
 print(mark_pos,'mark_pos')
