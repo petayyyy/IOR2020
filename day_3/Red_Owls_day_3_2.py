@@ -26,24 +26,24 @@ land = rospy.ServiceProxy('land', Trigger)
 
 def point(mas, text):
     global mark,b
-    for i in range (len(mas)):
-        for j in range (i+1,len(mas)):
-            if j >= len(mas):
-                break
+    i = 0
+    while i < len(mas):
+        j = i+1
+        while j < len(mas):
             if math.sqrt(abs(mas[i][0] - mas[j][0])**2 + abs(mas[i][1] - mas[j][1])**2) <= b:
-                mas[i][0] = (mas[i][0] + mas[j][0])/2
-                mas[i][1] = (mas[i][1] + mas[j][1])/2
+                mas[i][0] = (mas[i][0] + mas[j][0])//2
+                mas[i][1] = (mas[i][1] + mas[j][1])//2
                 del mas[j]
-        if i >= len(mas):
-            break
-        if mas[i][0] <= 2 and mas[i][1] <= 2 and mas[i][0] >= 0 and mas[i][1] >= 0:
+            j += 1
+        if mas[i][0] <= 2 and mas[i][1] <= 2:
             mark['C'].append([text,mas[i][0],mas[i][1]])
-        elif mas[i][0] > 2 and mas[i][1] < 2 and mas[i][0] <= 4 and mas[i][1] >= 0:
+        elif mas[i][0] > 2 and mas[i][1] < 2:
             mark['D'].append([text,mas[i][0],mas[i][1]])
-        elif mas[i][0] > 2 and mas[i][1] > 2 and mas[i][0] <= 4 and mas[i][1] <= 4:
+        elif mas[i][0] > 2 and mas[i][1] > 2:
             mark['B'].append([text,mas[i][0],mas[i][1]])
-        elif mas[i][0] < 2 and mas[i][1] > 2 and mas[i][0] >= 0 and mas[i][1] <= 4:
+        elif mas[i][0] < 2 and mas[i][1] > 2:
             mark['A'].append([text,mas[i][0],mas[i][1]])
+        i += 1
 
 
 class ColorDetecting():                                                                                              # Класс для распознавание цветов - желтый, синий, красный
