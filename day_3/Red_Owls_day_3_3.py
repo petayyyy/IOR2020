@@ -23,7 +23,7 @@ set_attitude = rospy.ServiceProxy('set_attitude', srv.SetAttitude)
 set_rates = rospy.ServiceProxy('set_rates', srv.SetRates)
 land = rospy.ServiceProxy('land', Trigger)
 
-f = open('coordin.txt','r')
+f = open('coordin.txt','w')
 # работа с файлом
 
 
