@@ -28,14 +28,14 @@ def point(mas, text):
     global mark,b
     for i in range (len(mas)):
         for j in (i+1,len(mas)):
-            if j+1 != len(mas) or i+1 != len(mas):
+             if j >= len(mas):
                 break
             if math.sqrt(abs(mas[i][0] - mas[j][0])**2 + abs(mas[i][1] - mas[j][1])**2) <= b:
                 mas[i][0] = (mas[i][0] + mas[j][0])/2
                 mas[i][1] = (mas[i][1] + mas[j][1])/2
                 del mas[j]
-            if j+1 != len(mas):
-                break
+        if i >= len(mas):
+            break
         if mas[i][0] <= 2 and mas[i][1] <= 2 and mas[i][0] >= 0 and mas[i][1] >= 0:
             mark['C'].append([text,mas[i][0],mas[i][1]])
         elif mas[i][0] > 2 and mas[i][1] < 2 and mas[i][0] <= 4 and mas[i][1] >= 0:
@@ -44,8 +44,7 @@ def point(mas, text):
             mark['B'].append([text,mas[i][0],mas[i][1]])
         elif mas[i][0] < 2 and mas[i][1] > 2 and mas[i][0] >= 0 and mas[i][1] <= 4:
             mark['A'].append([text,mas[i][0],mas[i][1]])
-        if i+1 != len(mas):
-            break
+
 
 class ColorDetecting():                                                                                              # Класс для распознавание цветов - желтый, синий, красный
     def __init__(self):                                                                                              # Функция init содежит:
