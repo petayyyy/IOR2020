@@ -144,7 +144,7 @@ class ColorDetecting():                                                         
                             y = int(sum_y / sum_pixel)
                             x_d = self.distance_x(x,start.z*100)
                             y_d = self.distance_y(y,start.z*100)
-                            cv2.putText(img, 'N3_Potato', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                            cv2.putText(img, 'N3_Potato', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                             self.ploh['Potato'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
                             cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                     except:pass
@@ -167,11 +167,11 @@ class ColorDetecting():                                                         
                             if math.sqrt(x_d**2+y_d**2) < 1.5:
                                 if len(approx) < 5:
                                     cv2.drawContours(img, [approx], 0, (0, 0, 0), 1)
-                                    cv2.putText(img, 'N3_Water', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                                    cv2.putText(img, 'N3_Water', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                                     self.ploh['Water'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
                                 else:
                                     self.lan['water'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
-                                    #cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                                    #cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                                 #cv2.putText(img, str(start.x+x_d)+' '+str(start.y+y_d), (x, y+20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     except:pass
                 
@@ -193,11 +193,11 @@ class ColorDetecting():                                                         
                             if math.sqrt(x_d**2+y_d**2) < 1.5:
                                 if len(approx) < 7:
                                     cv2.drawContours(img, [approx], 0, (0, 0, 0), 1)
-                                    cv2.putText(img, 'N3_Seed', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                                    cv2.putText(img, 'N3_Seed', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                                     self.ploh['Seed'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
                                 else:
                                     self.lan['seed'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
-                                    #cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                                    #cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                                 #cv2.putText(img, str(start.x+x_d)+' '+str(start.y+y_d), (x, y+20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
                     except:pass
                 
@@ -219,11 +219,11 @@ class ColorDetecting():                                                         
                             if math.sqrt(x_d**2+y_d**2) < 1.5:
                                 if len(approx) < 8:
                                     cv2.drawContours(img, [approx], 0, (0, 0, 0), 1)
-                                    cv2.putText(img, 'N3_Pastures', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                                    cv2.putText(img, 'N3_Pastures', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                                     self.ploh['Pastures'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
                                 else:
                                     self.lan['pastures'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
-                                    #cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                                    #cv2.putText(img, str(len(approx)), (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                                 #cv2.putText(img, str(start.x+x_d)+' '+str(start.y+y_d), (x, y+20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 0))
 
                     except:pass
@@ -242,7 +242,7 @@ class ColorDetecting():                                                         
                             y = int(sum_y / sum_pixel)
                             x_d = self.distance_x(x,start.z*100)
                             y_d = self.distance_y(y,start.z*100)
-                            cv2.putText(img, 'N3_Soil', (x, y), cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0))
+                            cv2.putText(img, 'N3_Soil', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                             self.ploh['Soil'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
                             cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
                     except:pass
