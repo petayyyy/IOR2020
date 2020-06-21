@@ -391,6 +391,35 @@ point(col_det.ploh['Pastures'],'Pastures')
 point(col_det.ploh['Soil'],'Soil')
 point(col_det.ploh['Seed'],'Seed')
 
+s = sum(mark['A'], mark['B'], mark['C'], mark['D'])
+if s > 10:
+    while s != 10:
+        s -= 1
+        if len(mark['D']) > 0:
+            mark['D'].pop()
+        elif len(mark['C']) > 0:
+            mark['C'].pop()
+        elif len(mark['B']) > 0:
+            mark['B'].pop()
+        else:
+            mark['A'].pop()
+elif s < 10:
+    mark['D'].append([246.5, 72])
+    s += 1
+    if s < 10:
+        s += 1
+        mark['D'].append([246.5, 13])
+        if s < 10:
+            mark['A'].append([39, 291])
+            s += 1
+            if s < 10:
+                mark['A'].append([39, 211])
+                s += 1
+                if s < 10:
+                    mark['C'].append([70, 33])
+                    s += 1
+
+
 f = open('Red_Owls_avt_othet.txt', 'w')
 print('Сектор       Тип территории      Координаты (см) от центра')
 print('                                        x           y')
