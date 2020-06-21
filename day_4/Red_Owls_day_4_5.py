@@ -121,6 +121,7 @@ class ColorDetecting():                                                         
                 if barcodes:    # Если они на картинке есть
                     for bar in barcodes:       # Проходит по всем QR кодам, которые он нашел
                         self.land = (bar.data.decode("utf-8")).lower() # Записывает в переменную информацию, находящуюся в данном коде
+                        print('Qr detect:' + self.land)
                     self.Qr = False
             if self.Color == True:
                 mask1_1 = cv2.inRange(Grey, self.potato_low, self.potato_high)                                                          # Создание облак точек для каждого цвета
