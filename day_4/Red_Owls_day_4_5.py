@@ -38,13 +38,13 @@ def point(mas, text):
                 mas[i][1] = (mas[i][1] + mas[j][1])//2
                 del mas[j]
             j += 1
-        if mas[i][0] <= 2 and mas[i][1] <= 2 and intNumber(mas[i][0]) and intNumber(mas[i][1]):
+        if mas[i][0] <= 200 and mas[i][1] <= 200 and intNumber(mas[i][0]) and intNumber(mas[i][1]) and mas[i][0] > 0 and mas[i][1] > 0:
             mark['C'].append([text,mas[i][0],mas[i][1]])
-        elif mas[i][0] > 2 and mas[i][1] < 2 and intNumber(mas[i][0]) and intNumber(mas[i][1]):
+        elif mas[i][0] > 200 and mas[i][1] < 200 and intNumber(mas[i][0]) and intNumber(mas[i][1]) and mas[i][0] < 300 and mas[i][1] > 0:
             mark['D'].append([text,mas[i][0],mas[i][1]])
-        elif mas[i][0] > 2 and mas[i][1] > 2 and intNumber(mas[i][0]) and intNumber(mas[i][1]):
+        elif mas[i][0] > 200 and mas[i][1] > 200 and intNumber(mas[i][0]) and intNumber(mas[i][1]) and mas[i][0] < 300 and mas[i][1] < 300:
             mark['B'].append([text,mas[i][0],mas[i][1]])
-        elif mas[i][0] < 2 and mas[i][1] > 2 and intNumber(mas[i][0]) and intNumber(mas[i][1]):
+        elif mas[i][0] < 200 and mas[i][1] > 200 and intNumber(mas[i][0]) and intNumber(mas[i][1]) and mas[i][0] > 0 and mas[i][1] < 300:
             mark['A'].append([text,mas[i][0],mas[i][1]])
         i += 1
 def point_pos(mas):
@@ -58,6 +58,7 @@ def point_pos(mas):
                 mas[i][1] = (mas[i][1] + mas[j][1])//2
                 del mas[j]
             j += 1
+        if mas[i][0] <= 300 and mas[i][1] <= 300 and intNumber(mas[i][0]) and intNumber(mas[i][1]) and mas[i][0] > 0 and mas[i][1] > 0:
         mark_pos.append([mas[i][0],mas[i][1]])
         i += 1
 
@@ -67,8 +68,8 @@ class ColorDetecting():                                                         
         rospy.init_node('Color_detect', anonymous=True)                                                              # Создание ноды
         self.image_pub = rospy.Publisher("Final",Image,queue_size=10)                                                # И топика для вывода финального изображения
 
-        self.potato_low = np.array([180, 210, 185])                                                                          # Параметры необходимые для определения облака точек каждого цвета:
-        self.potato_high = np.array([160, 165, 80])                                                                     # Красного
+        self.potato_low = np.array([160, 165, 80])                                                                       # Параметры необходимые для определения облака точек каждого цвета:
+        self.potato_high =  np.array([180, 210, 185])                                                                    # Красного
       
         self.water_low = np.array([106,65,62])                                                                       # Синего
         self.water_high = np.array([130,255,255])
@@ -83,8 +84,8 @@ class ColorDetecting():                                                         
         self.soil_high =np.array([15,165,150])
         
         self.out = cv2.VideoWriter('Scinti_pogalyista.avi',cv2.VideoWriter_fourcc('X','V','I','D'), 20, (320,240))
-        self.Qr = False
-        self.Color = True
+        self.Qr = True
+        self.Color = False
         self.land = ''
         self.koord = []
         self.ploh = {'Water':[],'Seed':[],'Pastures':[],'Soil':[],'Potato':[]}
