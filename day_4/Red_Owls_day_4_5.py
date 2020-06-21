@@ -276,6 +276,10 @@ print('ready')
 print navigate(x=0, y=0, z=1, speed=0.5, frame_id='body', auto_arm=True)
 rospy.sleep(3)
 
+print navigate(x=0.3, y=0.3, z=1.2, speed=0.25, yaw=math.radians(90), frame_id='aruco_map')
+rospy.sleep(3)
+col_det.Qr = True
+
 print navigate(x=0.5, y=0.3, z=1.2, speed=0.25, yaw=math.radians(90), frame_id='aruco_map')
 rospy.sleep(5)
 col_det.Qr = True
