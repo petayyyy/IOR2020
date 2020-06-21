@@ -346,7 +346,7 @@ if col_det.land in col_det.lan:
         rospy.sleep(10)
         col_det.Color = True
         rospy.sleep(1)
-        if len(col_det.koord) < 1:
+        if len(col_det.koord) > 1:
             print navigate(x=col_det.koord[0]/100, y=col_det.koord[1]/100, z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
             rospy.sleep(5)
             col_det.Color = False
