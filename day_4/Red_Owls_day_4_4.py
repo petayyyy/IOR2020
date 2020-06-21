@@ -172,7 +172,7 @@ class ColorDetecting():                                                         
                                     cv2.drawContours(img, [approx], 0, (193,91,154), 2)
                                     cv2.putText(img, 'N3_Water', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                                     self.ploh['Water'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
-                                    self.koord = [None,None]
+                                    self.koord = []
                                 else:
                                     if self.land == 'water':
                                         self.koord = [round(start.x*100+x_d,2)/100,round(start.y*100+y_d,2)/100]
@@ -201,7 +201,7 @@ class ColorDetecting():                                                         
                                     cv2.drawContours(img, [approx], 0, (193,91,154), 2)
                                     cv2.putText(img, 'N3_Seed', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                                     self.ploh['Seed'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
-                                    self.koord = [None,None]
+                                    self.koord = []
                                 else:
                                     if self.land == 'seed':
                                         self.koord = [round(start.x*100+x_d,2)/100,round(start.y*100+y_d,2)/100]
@@ -230,7 +230,7 @@ class ColorDetecting():                                                         
                                     cv2.drawContours(img, [approx], 0, (193,91,154), 2)
                                     cv2.putText(img, 'N3_Pastures', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                                     self.ploh['Pastures'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
-                                    self.koord = [None,None]
+                                    self.koord = []
                                 else:
                                     if self.land == 'pastures':
                                         self.koord = [round(start.x*100+x_d,2)/100,round(start.y*100+y_d,2)/100]
@@ -343,7 +343,7 @@ if col_det.land in col_det.lan:
         rospy.sleep(10)
         col_det.Color = True
         rospy.sleep(1)
-        if col_det.koord != [None,None]:
+        if len(col_det.koord) < 1:
             print navigate(x=col_det.koord[0], y=col_det.koord[1], z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
             rospy.sleep(5)
             col_det.Color = False
