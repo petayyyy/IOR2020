@@ -59,7 +59,7 @@ def point_pos(mas):
                 del mas[j]
             j += 1
         if mas[i][0] <= 300 and mas[i][1] <= 300 and intNumber(mas[i][0]) and intNumber(mas[i][1]) and mas[i][0] > 0 and mas[i][1] > 0:
-        mark_pos.append([mas[i][0],mas[i][1]])
+        mark_pos.append([mas[i][0]/100,mas[i][1]]/100)
         i += 1
 
 
@@ -328,6 +328,7 @@ col_det.Color = False
 
 print('Qr detect:' + col_det.land)
 mark_pos = []
+print(col_det.lan,'col_det.lan')
 
 if col_det.land == '':
     print navigate(x=0.5, y=0.3, z=1.2, speed=0.25, yaw=math.radians(90), frame_id='aruco_map')
@@ -337,6 +338,7 @@ if col_det.land == '':
     print('Qr detect:' + col_det.land)  
 if col_det.land in col_det.lan:
     point_pos(col_det.lan[col_det.land])
+    print(mark_pos,'mark_pos')
     for i in range(len(mark_pos)):
         x1 = mark_pos[i][0]
         y1 = mark_pos[i][1]
@@ -345,7 +347,7 @@ if col_det.land in col_det.lan:
         col_det.Color = True
         rospy.sleep(1)
         if len(col_det.koord) < 1:
-            print navigate(x=col_det.koord[0], y=col_det.koord[1], z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
+            print navigate(x=col_det.koord[0]/100, y=col_det.koord[1]/100, z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
             rospy.sleep(5)
             col_det.Color = False
             break
@@ -353,9 +355,6 @@ if col_det.land in col_det.lan:
 else:
     print navigate(x=1, y=1, z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
     rospy.sleep(13)
-
-print(col_det.lan,'col_det.lan')
-print(mark_pos,'mark_pos')
 
 land()
 b = 40
