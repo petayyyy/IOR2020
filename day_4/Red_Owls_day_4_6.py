@@ -37,8 +37,8 @@ def point(mas, text):
         j = i+1
         while j < len(mas):
             if math.sqrt(abs(mas[i][0] - mas[j][0])**2 + abs(mas[i][1] - mas[j][1])**2) <= b:
-                mas[i][0] = (mas[i][0] + mas[j][0])//2
-                mas[i][1] = (mas[i][1] + mas[j][1])//2
+                mas[i][0] = (mas[i][0] + mas[j][0])/2
+                mas[i][1] = (mas[i][1] + mas[j][1])/2
                 del mas[j]
             j += 1
         if mas[i][0] <= 200 and mas[i][1] <= 200 and intNumber(mas[i][0]) and intNumber(mas[i][1]) and mas[i][0] > 0 and mas[i][1] > 0:
