@@ -391,7 +391,7 @@ point(col_det.ploh['Pastures'],'Pastures')
 point(col_det.ploh['Soil'],'Soil')
 point(col_det.ploh['Seed'],'Seed')
 
-s = sum(mark['A'], mark['B'], mark['C'], mark['D'])
+s = sum(len(mark['A']), len(mark['B']), len(mark['C']), len(mark['D']))
 if s > 10:
     while s != 10:
         s -= 1
