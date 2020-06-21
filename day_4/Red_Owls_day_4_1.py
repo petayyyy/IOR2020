@@ -351,7 +351,7 @@ print('Сектор       Тип территории      Координаты 
 print('                                        x           y')
 f.write('Сектор       Тип территории      Координаты (см) от центра\n')
 f.write('                                        x           y\n')
-for i in mark:
+for i in ['A', 'B', 'C', 'D']:
     if len(mark[i])>0:
         for j in mark[i]:
             print("{}             {}                    {}        {}".format(i, j[0], j[1], j[2]))
