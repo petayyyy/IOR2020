@@ -57,8 +57,8 @@ def point_pos(mas):
         j = i+1
         while j < len(mas):
             if math.sqrt(abs(mas[i][0] - mas[j][0])**2 + abs(mas[i][1] - mas[j][1])**2) <= 40:
-                mas[i][0] = (mas[i][0] + mas[j][0])//2
-                mas[i][1] = (mas[i][1] + mas[j][1])//2
+                mas[i][0] = (mas[i][0] + mas[j][0])/2
+                mas[i][1] = (mas[i][1] + mas[j][1])/2
                 del mas[j]
             j += 1
         if mas[i][0] <= 300 and mas[i][1] <= 300 and intNumber(mas[i][0]) and intNumber(mas[i][1]) and mas[i][0] > 0 and mas[i][1] > 0:
@@ -381,7 +381,7 @@ else:
 
 land()
     
-b = 35
+b = 30
 mark = {'A':[],'B':[],'C':[],'D':[]}
 print('Подождите обработку данных') 
 
