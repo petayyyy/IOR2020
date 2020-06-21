@@ -10,7 +10,7 @@ from pyzbar import pyzbar
 from sensor_msgs.msg import Image
 import threading
 from cv_bridge import CvBridge, CvBridgeError
-
+sit = True                       # Тут менять если попросим
 from clever import srv
 from std_srvs.srv import Trigger
 
@@ -352,16 +352,28 @@ if col_det.land in col_det.lan:
         col_det.Color = True
         rospy.sleep(1)
         if len(col_det.koord) > 1:
-            print navigate(x=col_det.koord[0], y=col_det.koord[1], z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
-            rospy.sleep(5)
-            col_det.Color = False
-            break
+            if sit == True:
+                print navigate(x=col_det.koord[0], y=col_det.koord[1], z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
+                rospy.sleep(5)
+                print navigate(x=col_det.koord[0], y=col_det.koord[1], z=0.5, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
+                rospy.sleep(2)
+                print navigate(x=col_det.koord[0], y=col_det.koord[1], z=0.2, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
+                rospy.sleep(2)
+                col_det.Color = False
+                arming(False)
+                break
+            else:
+                print navigate(x=col_det.koord[0], y=col_det.koord[1], z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
+                rospy.sleep(5)
+                print navigate(x=col_det.koord[0], y=col_det.koord[1], z=0.5, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
+                rospy.sleep(2)
+                land()
     
 else:
     print navigate(x=1, y=1, z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
     rospy.sleep(13)
-
-land()
+    land()
+    
 b = 40
 mark = {'A':[],'B':[],'C':[],'D':[]}
 print('Подождите обработку данных') 
