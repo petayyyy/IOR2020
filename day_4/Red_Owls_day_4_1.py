@@ -73,8 +73,8 @@ class ColorDetecting():                                                         
         self.water_low = np.array([106,65,62])                                                                       # Синего
         self.water_high = np.array([128,192,121])
 
-        self.seed_low = np.array([21,88,130])                                                                       # И желтого
-        self.seed_high = np.array([49,192,162])
+        self.seed_low = np.array([20, 80, 88])                                                                       # И желтого
+        self.seed_high = np.array([49, 220, 225])
 
         self.pastures_low = np.array([65,86,42])                                                                     # И желтого
         self.pastures_high = np.array([95,255,99])
