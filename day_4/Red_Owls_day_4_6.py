@@ -404,19 +404,19 @@ if s > 10:
         else:
             mark['A'].pop()
 elif s < 10:
-    mark['D'].append([246.5, 72])
+    mark['D'].append(['Water',246.5, 72])
     s += 1
     if s < 10:
         s += 1
-        mark['D'].append([246.5, 13])
+        mark['D'].append(['Water',246.5, 13])
         if s < 10:
-            mark['A'].append([39, 291])
+            mark['A'].append(['Water',39, 291])
             s += 1
             if s < 10:
-                mark['A'].append([39, 211])
+                mark['A'].append(['Water',39, 211])
                 s += 1
                 if s < 10:
-                    mark['C'].append([70, 33])
+                    mark['C'].append(['Water',70, 33])
                     s += 1
 
 
