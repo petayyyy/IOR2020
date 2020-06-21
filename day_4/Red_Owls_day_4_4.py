@@ -334,6 +334,7 @@ if col_det.land == '':
     print('Qr detect:' + col_det.land)  
 if col_det.land in col_det.lan:
     point_pos(col_det.lan[col_det.land])
+    col_det.Color = True
     for i in range(len(mark_pos)):
         x1 = mark_pos[i][0]
         y1 = mark_pos[i][1]
@@ -342,6 +343,7 @@ if col_det.land in col_det.lan:
         if col_det.koord != [None,None]:
             print navigate(x=col_det.koord[0], y=col_det.koord[1], z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
             rospy.sleep(5)
+            col_det.Color = False
             break
     
 else:
