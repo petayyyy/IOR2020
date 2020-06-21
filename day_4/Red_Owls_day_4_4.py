@@ -282,7 +282,7 @@ print('Захар делай скрин')
 col_det.Color = True
 
 print navigate(x=0.5, y=2.8, z=1.2, speed=0.25, yaw=math.radians(90), frame_id='aruco_map')
-rospy.sleep(25)
+rospy.sleep(14)
 col_det.Color = False
 
 print navigate(x=1, y=2.8, z=1.2, speed=0.25, yaw=math.radians(90), frame_id='aruco_map')
@@ -292,7 +292,7 @@ col_det.Color = True
 
 print navigate(x=1, y=0.3, z=1.2, speed=0.25, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(25)
+rospy.sleep(14)
 col_det.Color = False
 
 print navigate(x=1.5, y=0.3, z=1.2, speed=0.25, yaw=math.radians(90), frame_id='aruco_map')
@@ -302,7 +302,7 @@ col_det.Color = True
 
 print navigate(x=1.5, y=2.8, z=1.2, speed=0.25, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(25)
+rospy.sleep(14)
 col_det.Color = False
 
 print navigate(x=2, y=2.8, z=1.2, speed=0.25, yaw=math.radians(90), frame_id='aruco_map')
@@ -312,7 +312,7 @@ col_det.Color = True
 
 print navigate(x=2, y=0.3, z=1.2, speed=0.25, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(25)
+rospy.sleep(14)
 col_det.Color = False
 
 print navigate(x=2.5, y=0.3, z=1.2, speed=0.25, yaw=math.radians(90), frame_id='aruco_map')
@@ -322,7 +322,7 @@ col_det.Color = True
 
 print navigate(x=2.5, y=2.8, z=1.2, speed=0.25, yaw=math.radians(90), frame_id='aruco_map')
 print('Захар делай скрин')
-rospy.sleep(25)
+rospy.sleep(14)
 col_det.Color = False
 
 print('Qr detect:' + col_det.land)
