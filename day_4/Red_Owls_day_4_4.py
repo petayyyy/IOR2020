@@ -67,20 +67,20 @@ class ColorDetecting():                                                         
         rospy.init_node('Color_detect', anonymous=True)                                                              # Создание ноды
         self.image_pub = rospy.Publisher("Final",Image,queue_size=10)                                                # И топика для вывода финального изображения
 
-        self.potato_low = np.array([157, 104, 113])                                                                          # Параметры необходимые для определения облака точек каждого цвета:
-        self.potato_high = np.array([185, 200, 168])                                                                     # Красного
+        self.potato_low = np.array([180, 210, 185])                                                                          # Параметры необходимые для определения облака точек каждого цвета:
+        self.potato_high = np.array([160, 165, 80])                                                                     # Красного
       
         self.water_low = np.array([106,65,62])                                                                       # Синего
-        self.water_high = np.array([128,192,121])
+        self.water_high = np.array([130,255,255])
 
-        self.seed_low = np.array([20, 80, 88])                                                                       # И желтого
-        self.seed_high = np.array([49, 220, 225])
+        self.seed_low = np.array([15, 65, 90])                                                                     # И желтого
+        self.seed_high = np.array([41, 220, 240])
 
         self.pastures_low = np.array([65,86,42])                                                                     # И желтого
         self.pastures_high = np.array([95,255,99])
 
-        self.soil_low = np.array([0,95,62])                                                                    # И желтого
-        self.soil_high = np.array([12,167,123])  
+        self.soil_low = np.array([0,90,55])                                                                   # И желтого
+        self.soil_high =np.array([15,165,150])
         
         self.out = cv2.VideoWriter('Scinti_pogalyista.avi',cv2.VideoWriter_fourcc('X','V','I','D'), 20, (320,240))
         self.Qr = False
@@ -142,7 +142,7 @@ class ColorDetecting():                                                         
                         sum_y = moments['m01']
                         sum_x = moments['m10']
                         sum_pixel = moments['m00']
-                        if sum_pixel > 3000:
+                        if sum_pixel > 1000:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
                             x_d = self.distance_x(x,start.z*100)
@@ -162,7 +162,7 @@ class ColorDetecting():                                                         
                         sum_y = moments['m01']
                         sum_x = moments['m10']
                         sum_pixel = moments['m00']
-                        if sum_pixel > 3000:
+                        if sum_pixel > 1000:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
                             x_d = self.distance_x(x,start.z*100)
@@ -191,7 +191,7 @@ class ColorDetecting():                                                         
                         sum_y = moments['m01']
                         sum_x = moments['m10']
                         sum_pixel = moments['m00']
-                        if sum_pixel > 3000:
+                        if sum_pixel > 1000:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
                             x_d = self.distance_x(x,start.z*100)
@@ -220,7 +220,7 @@ class ColorDetecting():                                                         
                         sum_y = moments['m01']
                         sum_x = moments['m10']
                         sum_pixel = moments['m00']
-                        if sum_pixel > 3000:
+                        if sum_pixel > 1000:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
                             x_d = self.distance_x(x,start.z*100)
@@ -249,7 +249,7 @@ class ColorDetecting():                                                         
                         sum_y = moments['m01']
                         sum_x = moments['m10']
                         sum_pixel = moments['m00']
-                        if sum_pixel > 3000:
+                        if sum_pixel > 1000:
                             x = int(sum_x / sum_pixel)
                             y = int(sum_y / sum_pixel)
                             x_d = self.distance_x(x,start.z*100)
@@ -336,12 +336,13 @@ if col_det.land == '':
     print('Qr detect:' + col_det.land)  
 if col_det.land in col_det.lan:
     point_pos(col_det.lan[col_det.land])
-    col_det.Color = True
     for i in range(len(mark_pos)):
         x1 = mark_pos[i][0]
         y1 = mark_pos[i][1]
         print navigate(x=x1, y=y1, z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
         rospy.sleep(10)
+        col_det.Color = True
+        rospy.sleep(1)
         if col_det.koord != [None,None]:
             print navigate(x=col_det.koord[0], y=col_det.koord[1], z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
             rospy.sleep(5)
