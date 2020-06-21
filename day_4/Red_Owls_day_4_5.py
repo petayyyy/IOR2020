@@ -360,7 +360,7 @@ if col_det.land in col_det.lan:
                 rospy.sleep(5)
                 print navigate(x=col_det.koord[0], y=col_det.koord[1], z=0.5, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
                 rospy.sleep(2)
-                print navigate(x=col_det.koord[0], y=col_det.koord[1], z=0.2, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
+                print navigate(x=col_det.koord[0], y=col_det.koord[1], z=0.15, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
                 rospy.sleep(2)
                 col_det.Color = False
                 arming(False)
@@ -370,9 +370,9 @@ if col_det.land in col_det.lan:
                 rospy.sleep(5)
                 print navigate(x=col_det.koord[0], y=col_det.koord[1], z=0.5, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
                 rospy.sleep(2)
+                col_det.Color = False
                 land()
-                break
-                col_det.Color = False   
+                break                   
 else:
     print navigate(x=1, y=1, z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
     rospy.sleep(13)
