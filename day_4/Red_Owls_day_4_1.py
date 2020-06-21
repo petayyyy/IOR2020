@@ -146,7 +146,7 @@ class ColorDetecting():                                                         
                             y_d = self.distance_y(y,start.z*100)
                             cv2.putText(img, 'N3_Potato', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                             self.ploh['Potato'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
-                            cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
+                            cv2.drawContours(img, [c], 0, (193,91,154), 2)
                     except:pass
                 
                 thresh = cv2.morphologyEx(mask2, cv2.MORPH_CLOSE, st1)
@@ -166,7 +166,7 @@ class ColorDetecting():                                                         
                             y_d = self.distance_y(y,start.z*100)
                             if math.sqrt(x_d**2+y_d**2) < 1.5:
                                 if len(approx) < 5:
-                                    cv2.drawContours(img, [approx], 0, (0, 0, 0), 1)
+                                    cv2.drawContours(img, [approx], 0, (193,91,154), 2)
                                     cv2.putText(img, 'N3_Water', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                                     self.ploh['Water'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
                                 else:
@@ -192,7 +192,7 @@ class ColorDetecting():                                                         
                             y_d = self.distance_y(y,start.z*100)
                             if math.sqrt(x_d**2+y_d**2) < 1.5:
                                 if len(approx) < 7:
-                                    cv2.drawContours(img, [approx], 0, (0, 0, 0), 1)
+                                    cv2.drawContours(img, [approx], 0, (193,91,154), 2)
                                     cv2.putText(img, 'N3_Seed', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                                     self.ploh['Seed'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
                                 else:
@@ -218,7 +218,7 @@ class ColorDetecting():                                                         
                             y_d = self.distance_y(y,start.z*100)
                             if math.sqrt(x_d**2+y_d**2) < 1.5:
                                 if len(approx) < 8:
-                                    cv2.drawContours(img, [approx], 0, (0, 0, 0), 1)
+                                    cv2.drawContours(img, [approx], 0, (193,91,154), 2)
                                     cv2.putText(img, 'N3_Pastures', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                                     self.ploh['Pastures'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
                                 else:
@@ -244,7 +244,7 @@ class ColorDetecting():                                                         
                             y_d = self.distance_y(y,start.z*100)
                             cv2.putText(img, 'N3_Soil', (x, y), cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0))
                             self.ploh['Soil'].append([round(start.x*100+x_d,2),round(start.y*100+y_d,2)])
-                            cv2.drawContours(img, [c], 0, (0, 0, 0), 2)
+                            cv2.drawContours(img, [c], 0, (193,91,154), 2)
                     except:pass
 
                 try:
