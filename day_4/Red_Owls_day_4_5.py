@@ -10,10 +10,13 @@ from pyzbar import pyzbar
 from sensor_msgs.msg import Image
 import threading
 from cv_bridge import CvBridge, CvBridgeError
+from mavros_msgs.srv import CommandBool
+
 sit = True                       # Тут менять если попросим
 from clever import srv
 from std_srvs.srv import Trigger
 
+arming = rospy.ServiceProxy('mavros/cmd/arming', CommandBool)
 get_telemetry = rospy.ServiceProxy('get_telemetry', srv.GetTelemetry)
 navigate = rospy.ServiceProxy('navigate', srv.Navigate)
 navigate_global = rospy.ServiceProxy('navigate_global', srv.NavigateGlobal)
@@ -368,7 +371,8 @@ if col_det.land in col_det.lan:
                 print navigate(x=col_det.koord[0], y=col_det.koord[1], z=0.5, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
                 rospy.sleep(2)
                 land()
-    
+                break
+                col_det.Color = False   
 else:
     print navigate(x=1, y=1, z=1, speed=0.5, yaw=math.radians(90),frame_id='aruco_map')
     rospy.sleep(13)
