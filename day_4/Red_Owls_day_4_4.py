@@ -82,6 +82,7 @@ class ColorDetecting():                                                         
         self.soil_low = np.array([0,95,62])                                                                    # И желтого
         self.soil_high = np.array([12,167,123])  
         
+        self.out = cv2.VideoWriter('Scinti_pogalyista.avi',cv2.VideoWriter_fourcc('X','V','I','D'), 20, (320,240))
         self.Qr = False
         self.Color = True
         self.land = ''
@@ -112,7 +113,8 @@ class ColorDetecting():                                                         
             start = get_telemetry(frame_id='aruco_map')
             img = cv2.undistort( img,np.array([[166.23942373073172,0,162.19011246829268],[0,166.5880923974026,109.82227735714285],[0,0,1]]), np.array([ 2.15356885e-01,  -1.17472846e-01,  -3.06197672e-04,-1.09444025e-04,  -4.53657258e-03,   5.73090623e-01,-1.27574577e-01,  -2.86125589e-02,   0.00000000e+00,0.00000000e+00,   0.00000000e+00,   0.00000000e+00,0.00000000e+00,   0.00000000e+00]),np.array([[166.23942373073172,0,162.19011246829268],[0,166.5880923974026,109.82227735714285],[0,0,1]]))
             Grey = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-
+            self.out.write(img)
+            
             if self.Qr == True:
                 barcodes  = pyzbar.decode(img)    # Распознование QR-кодов
                 if barcodes:    # Если они на картинке есть
