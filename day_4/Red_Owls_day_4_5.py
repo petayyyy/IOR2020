@@ -62,7 +62,7 @@ def point_pos(mas):
                 del mas[j]
             j += 1
         if mas[i][0] <= 300 and mas[i][1] <= 300 and intNumber(mas[i][0]) and intNumber(mas[i][1]) and mas[i][0] > 0 and mas[i][1] > 0:
-            mark_pos.append([mas[i][0]/100,mas[i][1]]/100)
+            mark_pos.append([mas[i][0]/100,mas[i][1]/100])
         i += 1
 
 
